@@ -131,7 +131,7 @@ for mfe in indigo_styled_mfes:
 ENV {generate_secure_random_string(10)}={generate_secure_random_string(10)}
 #RUN rm -rf node_modules/@edx/brand package-lock.json
 RUN npm cache clean --force
-RUN npm install @edx/brand@github:@MrZakharov/brand-openedx/tree/ulmo/indigo --cache /tmp/empty-cache
+RUN npm install @edx/brand@github:@MrZakharov/brand-openedx#ulmo/indigo --cache /tmp/empty-cache
 """,  # noqa: E501
             ),
         ]
@@ -144,7 +144,7 @@ hooks.Filters.ENV_PATCHES.add_item(
 ENV {generate_secure_random_string(10)}={generate_secure_random_string(10)}        
 #RUN rm -rf node_modules/@edx/brand package-lock.json
 RUN npm cache clean --force
-RUN npm install @edx/brand@github:@MrZakharov/brand-openedx/tree/ulmo/indigo --cache /tmp/empty-cache
+RUN npm install @edx/brand@github:@MrZakharov/brand-openedx#ulmo/indigo --cache /tmp/empty-cache
 """,
     )
 )
