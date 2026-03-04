@@ -5,6 +5,8 @@ import json
 import os
 import typing as t
 from glob import glob
+import secrets
+import string
 
 import importlib_resources
 from tutor import hooks
@@ -108,6 +110,10 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(list(config["overrides"].items()))
 
 
 #  MFEs that are styled using Indigo
+def generate_secure_random_string(n):
+    characters = string.ascii_letters
+    return ''.join(secrets.choice(characters) for _ in range(n))
+
 indigo_styled_mfes = [
     "learning",
     "learner-dashboard",
@@ -121,7 +127,8 @@ for mfe in indigo_styled_mfes:
         [
             (
                 f"mfe-dockerfile-post-npm-install-{mfe}",
-                """
+                f"""
+ENV {generate_secure_random_string(10)}={generate_secure_random_string(10)}
 RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.0'
 """,  # noqa: E501
             ),
@@ -131,7 +138,10 @@ RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.0'
 hooks.Filters.ENV_PATCHES.add_item(
     (
         "mfe-dockerfile-post-npm-install-authn",
-        "RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.0'",
+        f"""
+ENV {generate_secure_random_string(10)}={generate_secure_random_string(10)}        
+RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.0'
+""",
     )
 )
 
