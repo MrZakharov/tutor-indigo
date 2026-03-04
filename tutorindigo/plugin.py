@@ -129,7 +129,7 @@ for mfe in indigo_styled_mfes:
                 f"mfe-dockerfile-post-npm-install-{mfe}",
                 f"""
 ENV {generate_secure_random_string(10)}={generate_secure_random_string(10)}
-RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.0'
+RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.1'
 """,  # noqa: E501
             ),
         ]
@@ -140,7 +140,7 @@ hooks.Filters.ENV_PATCHES.add_item(
         "mfe-dockerfile-post-npm-install-authn",
         f"""
 ENV {generate_secure_random_string(10)}={generate_secure_random_string(10)}        
-RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.0'
+RUN npm install '@edx/brand@github:@MrZakharov/brand-openedx#indigo-2.5.1'
 """,
     )
 )
