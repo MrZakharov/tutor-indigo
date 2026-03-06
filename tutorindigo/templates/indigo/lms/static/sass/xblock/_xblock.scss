@@ -1,3 +1,12 @@
+
+:root {
+    --font-family-sans-serif : 'Roboto', 'Inter', 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+pre, code {
+    font-family: 'Roboto Mono', monospace, serif;
+}
+
 // Include custom xblocks
 .wrap-instructor-info a.instructor-info-action {
     background: $primary !important;
